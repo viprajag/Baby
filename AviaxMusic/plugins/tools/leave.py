@@ -6,7 +6,7 @@ from AnonXMusic import app, userbot
 from AnonXMusic.misc import SUDOERS
 from AnonXMusic.utils.database import get_assistant, is_active_chat, get_client
 from AnonXMusic.core.userbot import assistants
-from config import LOGGER_ID as JAI
+from config import LOG_GROUP_ID as JAI
 
 
 @app.on_message(filters.command(["leaveall1", f"leaveall1@{app.username}"]) & SUDOERS)
