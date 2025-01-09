@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.enums import ChatType
 
-from config import LOGGER_ID
+from config import LOG_GROUP_ID
 from AviaxMusic import app, userbot
 from AviaxMusic.misc import SUDOERS
 from AviaxMusic.utils.database import get_client
