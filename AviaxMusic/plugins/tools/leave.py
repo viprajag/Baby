@@ -2,10 +2,10 @@ import asyncio
 from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import InviteRequestSent
-from AnonXMusic import app, userbot
-from AnonXMusic.misc import SUDOERS
-from AnonXMusic.utils.database import get_assistant, is_active_chat, get_client
-from AnonXMusic.core.userbot import assistants
+from AviaxMusic import app, userbot
+from AviaxMusic.misc import SUDOERS
+from AviaxMusic.utils.database import get_assistant, is_active_chat, get_client
+from AviaxMusic.core.userbot import assistants
 from config import LOG_GROUP_ID as JAI
 
 
