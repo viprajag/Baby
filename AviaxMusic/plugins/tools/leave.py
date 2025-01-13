@@ -3,9 +3,9 @@ from pyrogram.types import Message
 from pyrogram.enums import ChatType
 
 from config import LOG_GROUP_ID
-from AviaxMusic import app, userbot
-from AviaxMusic.misc import SUDOERS
-from AviaxMusic.utils.database import get_client
+from AnonXMusic import app, userbot
+from AnonXMusic.misc import SUDOERS
+from AnonXMusic.utils.database import get_client
 
 
 @app.on_message(filters.command(["leaveall1", "leaveall2", "leaveall3", "leaveall4", "leaveall5"]) & SUDOERS)
