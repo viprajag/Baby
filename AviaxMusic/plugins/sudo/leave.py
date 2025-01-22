@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.enums import ChatType
 
-from config import LOGGER_ID
+from config import LOG_GROUP_ID
 from AnonXMusic import app, userbot
 from AnonXMusic.misc import SUDOERS
 from AnonXMusic.utils.database import get_client
@@ -16,7 +16,7 @@ async def leave_ass(_, msg: Message):
     ub = await get_client(assnum)
     async for dialog in ub.get_dialogs():
         if dialog.chat.type in [ChatType.GROUP, ChatType.SUPERGROUP, ChatType.CHANNEL]:
-            if dialog.chat.id == LOGGER_ID:
+            if dialog.chat.id == LOG_GROUP_ID:
                 continue
             try:
                 await ub.leave_chat(dialog.chat.id)
