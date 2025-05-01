@@ -480,4 +480,3 @@ class YouTubeAPI:
             return "Error: Download failed"
 
         return downloaded_file, direct
-
