@@ -10,9 +10,6 @@ load_dotenv()
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 
-# Vars For API End Pont.
-YTPROXY_URL = getenv("YTPROXY_URL", 'http://tubed2.okflix.top/') ## E.G https://yt.okflix.
-YT_API_KEY = "freekey15052025"
 
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
