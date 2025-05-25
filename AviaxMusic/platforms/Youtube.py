@@ -52,7 +52,7 @@ class YouTubeUtils:
             LOGGER(__name__).warning("Video ID is None")
             return None
 
-        from AnonXMusic import app
+        from AviaxMusic import app
         if public_url := await HttpxClient().make_request(f"{API_URL}/yt?id={video_id}"):
             dl_url = public_url.get("results")
             if not dl_url:
