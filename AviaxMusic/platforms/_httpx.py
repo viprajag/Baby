@@ -15,7 +15,7 @@ import aiofiles
 import httpx
 
 import config
-from AnonXMusic.logging import LOGGER
+from AviaxMusic.logging import LOGGER
 
 @dataclass
 class DownloadResult:
