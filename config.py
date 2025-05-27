@@ -10,6 +10,9 @@ load_dotenv()
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 
+# Vars For API End Pont.
+YTPROXY_URL = getenv("YTPROXY_URL", 'https://tgapi.xbitcode.com') ## E.G https://yt.okflix.
+YT_API_KEY = getenv("YT_API_KEY" , None ) ## get your secret key from Mr cute x - @MR_CUTE_X
 
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
