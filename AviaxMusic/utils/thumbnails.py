@@ -1,6 +1,6 @@
 # ATLEAST GIVE CREDITS IF YOU STEALING :(((((((((((((((((((((((((((((((((((((
 # ELSE NO FURTHER PUBLIC THUMBNAIL UPDATES
-
+import traceback
 import random
 import logging
 import os
