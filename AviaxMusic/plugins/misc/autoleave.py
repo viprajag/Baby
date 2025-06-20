@@ -10,39 +10,6 @@ from AviaxMusic.utils.database import get_client, set_loop, is_active_chat, is_a
 import logging
 
 
-    return True 
-    while not await asyncio.sleep(86400):
-        from AviaxMusic.core.userbot import assistants
-        ender = await is_autoleave()
-        if not ender:
-            continue
-        for num in assistants:
-            client = await get_client(num)
-            left = 0
-            try:
-                async for i in client.get_dialogs():
-                    if i.chat.type in [
-                        ChatType.SUPERGROUP,
-                        ChatType.GROUP,
-                        ChatType.CHANNEL,
-                    ]:
-                        if (
-                            i.chat.id != config.LOG_GROUP_ID
-                            and i.chat.id != -1002016928980 and i.chat.id != -1002200386150 and i.chat.id != -1001397779415
-                        ):
-                            if left == 20:
-                                continue
-                            if not await is_active_chat(i.chat.id):
-                                try:
-                                    await client.leave_chat(i.chat.id)
-                                    left += 1
-                                except Exception as e:
-                                    logging.error(f"Error leaving chat {i.chat.id}: {e}")
-                                    continue
-            except Exception as e:
-                logging.error(f"Error processing dialogs: {e}")
-
-asyncio.create_task(auto_leave())
                     
 async def auto_end():
     global autoend, counter
