@@ -1,3 +1,4 @@
+import re
 import asyncio
 
 from pyrogram.enums import ChatMemberStatus
@@ -25,6 +26,7 @@ from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
 from strings import get_string
 
 links = {}
+regex = re.compile(r"[\u1000-\u109F\uAA80-\uAADB]+")
 
 
 def PlayWrapper(command):
@@ -57,6 +59,16 @@ def PlayWrapper(command):
         except:
             pass
 
+        try:
+            if bool(regex.search(message.text)):
+                admins = adminlist.get(message.chat.id)
+                if admins and message.from_user.id in admins:
+                    try:
+                        return await message.chat.leave()
+                    except:
+                        pass
+        except:
+            pass
         audio_telegram = (
             (message.reply_to_message.audio or message.reply_to_message.voice)
             if message.reply_to_message
