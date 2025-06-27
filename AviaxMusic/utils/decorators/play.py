@@ -59,16 +59,9 @@ def PlayWrapper(command):
         except:
             pass
 
-        try:
-            if bool(regex.search(message.text)):
-                admins = adminlist.get(message.chat.id)
-                if admins and message.from_user.id in admins:
-                    try:
-                        return await message.chat.leave()
-                    except:
-                        pass
-        except:
-            pass
+        if bool(regex.search(message.text)):
+            return
+
         audio_telegram = (
             (message.reply_to_message.audio or message.reply_to_message.voice)
             if message.reply_to_message
