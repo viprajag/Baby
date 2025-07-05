@@ -16,7 +16,7 @@ import httpx
 from aiofiles import os
 
 import config
-from AviaxMusic.logger import LOGGER
+from AviaxMusic.logging import LOGGER
 
 
 @dataclass
