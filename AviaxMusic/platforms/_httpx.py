@@ -15,7 +15,7 @@ import aiofiles
 import httpx
 from aiofiles import os
 
-from ._config import config
+import config
 from AviaxMusic.logger import LOGGER
 
 
