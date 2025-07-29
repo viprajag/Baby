@@ -1,5 +1,6 @@
 aiofiles
 aiohttp
+apscheduler
 asyncio
 beautifulsoup4
 dnspython
@@ -10,9 +11,10 @@ heroku3
 motor
 pillow
 psutil
+httpx==0.27.2
 py-tgcalls==0.9.7
 pykeyboard
-kurigram
+pyrofork
 python-dotenv
 pyyaml
 requests
@@ -20,8 +22,6 @@ speedtest-cli
 spotipy
 tgcrypto
 unidecode
-uvloop
 yt-dlp
-git+https://github.com/Kanha-XD/ytsearchpython
-httpx[http2]==0.27.0
-pytgcrypto
+youtube-search
+youtube-search-python
