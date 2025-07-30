@@ -11,10 +11,10 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 
-from AnonXMusic.logging import LOGGER
-from AnonXMusic.platforms._httpx import HttpxClient
-from AnonXMusic.utils.database import is_on_off
-from AnonXMusic.utils.formatters import time_to_seconds
+from AviaxMusic.logging import LOGGER
+from AviaxMusic.platforms._httpx import HttpxClient
+from AviaxMusic.utils.database import is_on_off
+from AviaxMusic.utils.formatters import time_to_seconds
 from config import API_URL, API_KEY
 
 class YouTubeUtils:
@@ -52,7 +52,7 @@ class YouTubeUtils:
             LOGGER(__name__).warning("Video ID is None")
             return None
 
-        from AnonXMusic import app
+        from AviaxMusic import app
         if public_url := await HttpxClient().make_request(f"{API_URL}/yt?id={video_id}&video={is_video}"):
             dl_url = public_url.get("results")
             if not dl_url:
