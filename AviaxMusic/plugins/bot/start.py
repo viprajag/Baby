@@ -91,7 +91,7 @@ async def start_pm(client, message: Message, _):
         )
         if await is_on_off(2):
             return await app.send_message(
-                chat_id=config.LOGGER_ID,
+                chat_id=config.LOG_GROUP_ID,
                 text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
             )
 
@@ -164,3 +164,4 @@ async def welcome(client, message: Message):
 
         except Exception as ex:
             print(ex)
+
