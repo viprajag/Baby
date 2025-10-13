@@ -31,42 +31,37 @@ def cookie_txt_file():
 
 
 async def download_song(link: str):
-    video_id = link.split('v=')[-1].split('&')[0]
+    from Spy import app
+    x = re.compile(
+        r'(?:https?://)?(?:www\.)?(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{11})'
+    )
+    video_id = x.search(link)
+    vidid = video_id.group(1) if video_id else link
 
-    download_folder = "downloads"
-    for ext in ["mp3", "m4a", "webm"]:
-        file_path = f"{download_folder}/{video_id}.{ext}"
-        if os.path.exists(file_path):
-            #print(f"File already exists: {file_path}")
-            return file_path
-        
-    song_url = f"{API_URL}/song/{video_id}?api={API_KEY}"
-    async with aiohttp.ClientSession() as session:
-        for attempt in range(10):
-            try:
-                async with session.get(song_url) as response:
-                    if response.status != 200:
-                        raise Exception(f"API request failed with status code {response.status}")
-                
-                    data = await response.json()
-                    status = data.get("status", "").lower()
+    xyz = os.path.join("downloads", f"{vidid}.mp3")
+    if os.path.exists(xyz):
+        return xyz
 
-                    if status == "done":
-                        download_url = data.get("link")
-                        if not download_url:
-                            raise Exception("API response did not provide a download URL.")
-                        break
-                    elif status == "downloading":
-                        await asyncio.sleep(4)
-                    else:
-                        error_msg = data.get("error") or data.get("message") or f"Unexpected status '{status}'"
-                        raise Exception(f"API error: {error_msg}")
-            except Exception as e:
-                print(f"[FAIL] {e}")
-                return None
-        else:
-            print("⏱️ Max retries reached. Still downloading...")
-            return None
+    loop = asyncio.get_running_loop()
+
+    def get_url():
+        api_url = f"{BABYAPI}/song?query={vidid}"
+        try:
+            return requests.get(api_url).json().get("link")
+        except:
+            return None
+
+    download_url = await loop.run_in_executor(None, get_url)
+    parsed = urlparse(download_url)
+    parts = parsed.path.strip("/").split("/")
+    cname, msgid = str(parts[0]), int(parts[1])
+    msg = await app.get_messages(cname, msgid)
+    await msg.download(file_name=xyz)
+
+    while not os.path.exists(xyz):
+        await asyncio.sleep(0.5)
+
+    return xyz
     
 
         try:
@@ -596,3 +591,4 @@ class YouTubeAPI:
             direct = True
             downloaded_file = await download_song(link)
         return downloaded_file, direct
+
